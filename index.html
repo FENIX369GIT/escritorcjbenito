@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CJ Benito - Escritor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 50%, #000011 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navegación */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            border-bottom: 2px solid #ff006e;
+            box-shadow: 0 5px 20px rgba(255, 0, 110, 0.5);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav a:hover {
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ff006e, #00ffff);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Contenido */
+        .content {
+            margin-top: 80px;
+            padding: 20px;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Carrusel */
+        .carousel {
+            position: relative;
+            max-width: 1200px;
+            margin: 50px auto;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(255, 0, 110, 0.3);
+        }
+
+        .carousel-item {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            cursor: pointer;
+        }
+
+        .carousel-item.active {
+            opacity: 1;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .carousel-title {
+            font-size: 36px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            color: #00ffff;
+        }
+
+        /* Libros */
+        .books-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .book-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 0, 110, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 0, 110, 0.4);
+            border-color: #00ffff;
+        }
+
+        .book-cover {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .book-cover:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.5);
+        }
+
+        .synopsis {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+
+        .buy-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff006e, #ff3366);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .buy-button:hover {
+            background: linear-gradient(45deg, #ff3366, #ff006e);
+            box-shadow: 0 5px 20px rgba(255, 0, 110, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Autor */
+        .author-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .author-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .author-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .author-image img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 30px 60px rgba(0, 255, 255, 0.5);
+        }
+
+        .author-bio {
+            flex: 2;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .author-bio h2 {
+            color: #ff006e;
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Contacto */
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .social-links {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .social-links h2 {
+            color: #00ffff;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .tiktok-link {
+            display: inline-block;
+            background: #000000;
+            color: #ffffff;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid #ff006e;
+            margin: 10px;
+        }
+
+        .tiktok-link:hover {
+            background: #ff006e;
+            box-shadow: 0 5px 20px rgba(255, 0, 110, 0.6);
+        }
+
+        .email-contact {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 20px;
+        }
+
+        .email-contact a {
+            color: #00ffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .email-contact a:hover {
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #ff006e;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff006e;
+            box-shadow: 0 0 10px rgba(255, 0, 110, 0.5);
+        }
+
+        .submit-button {
+            background: linear-gradient(45deg, #00ffff, #0099cc);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            background: linear-gradient(45deg, #0099cc, #00ffff);
+            box-shadow: 0 5px 20px rgba(0, 255, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+                padding: 10px;
+            }
+
+            .carousel {
+                height: 300px;
+            }
+
+            .carousel-title {
+                font-size: 24px;
+            }
+
+            .author-section {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showPage('home')">Inicio</a></li>
+            <li><a href="#" onclick="showPage('books')">Libros</a></li>
+            <li><a href="#" onclick="showPage('author')">Sobre el Autor</a></li>
+            <li><a href="#" onclick="showPage('contact')">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <!-- Página de Inicio -->
+        <div id="home" class="page active">
+            <div class="carousel" id="carousel">
+                <div class="carousel-item active" onclick="window.open('https://www.amazon.es/dp/B08XYZ1234', '_blank')">
+                    <img src="https://via.placeholder.com/1200x500/FF006E/FFFFFF?text=El+Amor+en+los+Tiempos+del+Cosmos" alt="El Amor en los Tiempos del Cosmos">
+                    <div class="carousel-overlay">
+                        <h3 class="carousel-title">El Amor en los Tiempos del Cosmos</h3>
+                        <p>Una historia épica de amor y aventura intergaláctica</p>
+                    </div>
+                </div>
+                <div class="carousel-item" onclick="window.open('https://www.amazon.es/dp/B08XYZ5678', '_blank')">
+                    <img src="https://via.placeholder.com/1200x500/00FFFF/000000?text=Neón+y+Corazones" alt="Neón y Corazones">
+                    <div class="carousel-overlay">
+                        <h3 class="carousel-title">Neón y Corazones</h3>
+                        <p>Cyberpunk meets romance en Tokio 2087</p>
+                    </div>
+                </div>
+                <div class="carousel-item" onclick="window.open('https://www.amazon.es/dp/B08XYZ9012', '_blank')">
+                    <img src="https://via.placeholder.com/1200x500/FF3366/FFFFFF?text=Estrellas+de+Cristal" alt="Estrellas de Cristal">
+                    <div class="carousel-overlay">
+                        <h3 class="carousel-title">Estrellas de Cristal</h3>
+                        <p>Cuando el universo conspira por el amor verdadero</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Página de Libros -->
+        <div id="books" class="page">
+            <div class="books-container">
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/300x450/FF006E/FFFFFF?text=El+Amor+en+los+Tiempos+del+Cosmos" alt="El Amor en los Tiempos del Cosmos" class="book-cover" onclick="window.open('https://www.amazon.es/dp/B08XYZ1234', '_blank')">
+                    <div class="synopsis">
+                        En un futuro donde la humanidad ha colonizado las estrellas, la capitana Eva Chen se enamora perdidamente de un misterioso alienígena que podría ser la clave para salvar la galaxia de una amenaza imparable. Una historia que combina la épica del space opera con la intensidad del romance más puro.
+                    </div>
+                    <a href="https://www.amazon.es/dp/B08XYZ1234" target="_blank" class="buy-button">Comprar en Amazon</a>
+                </div>
+
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/300x450/00FFFF/000000?text=Neón+y+Corazones" alt="Neón y Corazones" class="book-cover" onclick="window.open('https://www.amazon.es/dp/B08XYZ5678', '_blank')">
+                    <div class="synopsis">
+                        En los callejones neon de Neo-Tokio, una hacker rebelde y un detective cyborg deben unir fuerzas para desmantelar una conspiración que amenaza con controlar los corazones de toda la ciudad. Un thriller cyberpunk con un romance que desafía las leyes de la naturaleza.
+                    </div>
+                    <a href="https://www.amazon.es/dp/B08XYZ5678" target="_blank" class="buy-button">Comprar en Amazon</a>
+                </div>
+
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/300x450/FF3366/FFFFFF?text=Estrellas+de+Cristal" alt="Estrellas de Cristal" class="book-cover" onclick="window.open('https://www.amazon.es/dp/B08XYZ9012', '_blank')">
+                    <div class="synopsis">
+                        Cuando las estrellas comienzan a apagarse una por una, la astrónoma Luna Martínez descubre que cada estrella contiene el alma de un amor perdido. Para salvar al universo, debe enfrentar su propio pasado y el amor que creía haber perdido para siempre.
+                    </div>
+                    <a href="https://www.amazon.es/dp/B08XYZ9012" target="_blank" class="buy-button">Comprar en Amazon</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Página del Autor -->
+        <div id="author" class="page">
+            <div class="author-section">
+                <div class="author-image">
+                    <img src="https://via.placeholder.com/400x600/1a1a1a/FFFFFF?text=CJ+Benito" alt="CJ Benito">
+                </div>
+                <div class="author-bio">
+                    <h2>CJ Benito</h2>
+                    <p>
+                        Nacido en Madrid en 1985, CJ Benito creció entre libros de ciencia ficción y películas de romance. Su pasión por escribir comenzó cuando descubrió que podía combinar sus dos géneros favoritos en historias únicas que exploran el amor en contextos extraordinarios.
+                    </p>
+                    <br>
+                    <p>
+                        Con formación en física teórica y literatura comparada, Benito crea universos complejos donde las leyes de la física se doblan para dar paso a las emociones más humanas. Sus novelas han sido traducidas a más de 15 idiomas y ha vendido más de 2 millones de copias worldwide.
+                    </p>
+                    <br>
+                    <p>
+                        "Escribo sobre el amor porque es la única fuerza que puede vencer al tiempo, al espacio y a la muerte misma. En mis historias, los corazones laten más allá de las galaxias y las emociones trascienden las dimensiones."
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Página de Contacto -->
+        <div id="contact" class="page">
+            <div class="contact-container">
+                <div class="social-links">
+                    <h2>Sígueme en TikTok</h2>
+                    <a href="https://www.tiktok.com/@cjbenito.escritor" target="_blank" class="tiktok-link">@cjbenito.escritor</a>
+                </div>
+
+                <div class="email-contact">
+                    <p>Contacto directo: <a href="mailto:contacto@escritorcjbenito.es">contacto@escritorcjbenito.es</a></p>
+                </div>
+
+                <form class="contact-form" action="mailto:contacto@escritorcjbenito.es" method="post" enctype="text/plain">
+                    <h2 style="text-align: center; color: #ff006e; margin-bottom: 30px;">Envíame un mensaje</h2>
+                    
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Asunto</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para cambiar entre páginas
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        // Carrusel automático aleatorio
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        let currentIndex = 0;
+
+        function showRandomCarouselItem() {
+            carouselItems[currentIndex].classList.remove('active');
+            
+            // Selección aleatoria de la siguiente imagen
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * carouselItems.length);
+            } while (randomIndex === currentIndex && carouselItems.length > 1);
+            
+            currentIndex = randomIndex;
+            carouselItems[currentIndex].classList.add('active');
+        }
+
+        // Cambiar imagen cada 4 segundos
+        setInterval(showRandomCarouselItem, 4000);
+
+        // Prevenir el envío del formulario y mostrar alerta
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu mensaje! Me pondré en contacto contigo pronto.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
