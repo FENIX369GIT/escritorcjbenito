@@ -1,424 +1,247 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CJ Benito - Escritor</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CJ Benito - Escritor</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Georgia', serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: #f5f5f5;
+      min-height: 100vh;
+    }
+    nav {
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(10px);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(229,9,20,0.3);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+    nav a {
+      color: #f5f5f5;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 10px 20px;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #e50914;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .section {
+      display: none;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    .section.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .inicio {
+      text-align: center;
+      padding: 60px 0;
+    }
+    .inicio h1 {
+      font-size: 48px;
+      margin-bottom: 30px;
+      background: linear-gradient(45deg, #e50914, #ff6b6b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .resumen-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    .resumen-card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 15px;
+      border: 1px solid rgba(229,9,20,0.3);
+      transition: transform 0.3s ease;
+    }
+    .resumen-card:hover {
+      transform: translateY(-10px);
+    }
+    .resumen-card h3 {
+      color: #e50914;
+      margin-bottom: 15px;
+    }
 
-        body {
-            font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: #f5f5f5;
-            min-height: 100vh;
-        }
+    /* Iframe styling */
+    .iframe-container {
+      width: 100%;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .iframe-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #e50914;
+    }
+    iframe {
+      flex: 1;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      background: #fff;
+    }
 
-        /* Navegación */
-        nav {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(229, 9, 20, 0.3);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-        }
-
-        nav a {
-            color: #f5f5f5;
-            text-decoration: none;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 10px 20px;
-        }
-
-        nav a:hover {
-            color: #e50914;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #e50914;
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Contenedor principal */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        /* Secciones */
-        .section {
-            display: none;
-            animation: fadeIn 0.8s ease-in-out;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Inicio */
-        .inicio {
-            text-align: center;
-            padding: 60px 0;
-        }
-
-        .inicio h1 {
-            font-size: 48px;
-            margin-bottom: 30px;
-            background: linear-gradient(45deg, #e50914, #ff6b6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .resumen-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .resumen-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid rgba(229, 9, 20, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .resumen-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.4);
-        }
-
-        .resumen-card h3 {
-            color: #e50914;
-            margin-bottom: 15px;
-            font-size: 24px;
-        }
-
-        /* Botones de redirección */
-        .redirect-btn {
-            display: inline-block;
-            padding: 15px 40px;
-            background: linear-gradient(45deg, #e50914, #ff6b6b);
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
-            margin: 20px;
-        }
-
-        .redirect-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 25px rgba(229, 9, 20, 0.6);
-        }
-
-        /* Ventanas de audiolibros */
-        .audiolibros-container {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .audio-window {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(229, 9, 20, 0.3);
-            border-radius: 15px;
-            padding: 40px;
-            text-align: center;
-            min-height: 200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Contacto */
-        .contacto-info {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 15px;
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        .contacto-item {
-            margin: 20px 0;
-            font-size: 20px;
-        }
-
-        .contacto-item a {
-            color: #e50914;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contacto-item a:hover {
-            color: #ff6b6b;
-        }
-
-        /* Formulario */
-        .form-container {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 15px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 10px;
-            color: #e50914;
-            font-size: 18px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(229, 9, 20, 0.3);
-            border-radius: 8px;
-            color: white;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #e50914;
-            box-shadow: 0 0 10px rgba(229, 9, 20, 0.4);
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(45deg, #e50914, #ff6b6b);
-            color: white;
-            border: none;
-            border-radius: 30px;
-            font-size: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 4px 20px rgba(229, 9, 20, 0.6);
-        }
-
-        /* Icono TikTok */
-        .tiktok-icon {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            background: #ff0050;
-            border-radius: 50%;
-            margin-left: 10px;
-            vertical-align: middle;
-            position: relative;
-            transition: transform 0.3s ease;
-        }
-
-        .tiktok-icon:hover {
-            transform: scale(1.2);
-        }
-
-        .tiktok-icon::before {
-            content: "♪";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 20px;
-        }
-    </style>
+    /* Contacto */
+    .contacto-info {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 15px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .contacto-item {
+      margin: 20px 0;
+      font-size: 20px;
+    }
+    .contacto-item a {
+      color: #e50914;
+      text-decoration: none;
+    }
+    .form-container {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 15px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .form-group {
+      margin-bottom: 25px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 10px;
+      color: #e50914;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 15px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(229,9,20,0.3);
+      border-radius: 8px;
+      color: white;
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(45deg, #e50914, #ff6b6b);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#" onclick="showSection('inicio')">Inicio</a></li>
-            <li><a href="#" onclick="showSection('libros')">Libros</a></li>
-            <li><a href="#" onclick="showSection('audiolibros')">Audiolibros</a></li>
-            <li><a href="#" onclick="showSection('autor')">Sobre el Autor</a></li>
-            <li><a href="#" onclick="showSection('contacto')">Contacto</a></li>
-        </ul>
-    </nav>
 
-    <div class="container">
-        <!-- INICIO -->
-        <section id="inicio" class="section active">
-            <div class="inicio">
-                <h1>CJ Benito</h1>
-                <p style="font-size: 24px; margin-bottom: 40px; font-style: italic;">"Donde las palabras se convierten en magia"</p>
-                
-                <div class="resumen-grid">
-                    <div class="resumen-card">
-                        <h3>📚 Libros</h3>
-                        <p>Descubre mi colección completa de novelas disponibles en Amazon. Historias que te transportarán a otros mundos.</p>
-                    </div>
-                    <div class="resumen-card">
-                        <h3>🎧 Audiolibros</h3>
-                        <p>Escucha mis historias mientras viajas o relájate. Disponibles en Sonolibro y Audible.</p>
-                    </div>
-                    <div class="resumen-card">
-                        <h3>✍️ Sobre el Autor</h3>
-                        <p>Conoce más sobre mi trayectoria, inspiraciones y el mundo detrás de mis historias.</p>
-                    </div>
-                    <div class="resumen-card">
-                        <h3>📧 Contacto</h3>
-                        <p>¿Quieres colaborar o tienes alguna pregunta? Estoy aquí para escucharte.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+<nav>
+  <ul>
+    <li><a href="#" onclick="showSection('inicio')">Inicio</a></li>
+    <li><a href="#" onclick="showSection('libros')">Libros</a></li>
+    <li><a href="#" onclick="showSection('audiolibros')">Audiolibros</a></li>
+    <li><a href="#" onclick="showSection('autor')">Sobre el Autor</a></li>
+    <li><a href="#" onclick="showSection('contacto')">Contacto</a></li>
+  </ul>
+</nav>
 
-        <!-- LIBROS -->
-        <section id="libros" class="section">
-            <div style="text-align: center; padding: 60px 0;">
-                <h2 style="font-size: 36px; margin-bottom: 30px; color: #e50914;">Mis Libros</h2>
-                <p style="font-size: 20px; margin-bottom: 40px;">Visita mi tienda oficial en Amazon</p>
-                <a href="https://www.amazon.es/stores/author/B00D7LJFRS" target="_blank" class="redirect-btn">
-                    Ver Catálogo en Amazon
-                </a>
-            </div>
-        </section>
+<div class="container">
 
-        <!-- AUDIOLIBROS -->
-        <section id="audiolibros" class="section">
-            <h2 style="text-align: center; font-size: 36px; margin-bottom: 40px; color: #e50914;">Audiolibros</h2>
-            <div class="audiolibros-container">
-                <div class="audio-window">
-                    <h3 style="font-size: 28px; margin-bottom: 20px; color: #e50914;">Sonolibro</h3>
-                    <p style="font-size: 18px; margin-bottom: 30px;">Descubre mis audiolibros en la plataforma Sonolibro</p>
-                    <a href="https://sonolibro.com/audiolibros/autor/cjbenito" target="_blank" class="redirect-btn">
-                        Escuchar en Sonolibro
-                    </a>
-                </div>
-                <div class="audio-window">
-                    <h3 style="font-size: 28px; margin-bottom: 20px; color: #e50914;">Audible</h3>
-                    <p style="font-size: 18px; margin-bottom: 30px;">Mis audiolibros también disponibles en Audible</p>
-                    <a href="https://www.audible.es/search?searchAuthor=Carlos+Benito" target="_blank" class="redirect-btn">
-                        Escuchar en Audible
-                    </a>
-                </div>
-            </div>
-        </section>
+  <!-- INICIO -->
+  <section id="inicio" class="section active">
+    <div class="inicio">
+      <h1>CJ Benito</h1>
+      <p style="font-size: 24px; font-style: italic;">Donde las palabras se convierten en magia</p>
+      <div class="resumen-grid">
+        <div class="resumen-card"><h3>📚 Libros</h3><p>Explora mi catálogo completo en Amazon.</p></div>
+        <div class="resumen-card"><h3>🎧 Audiolibros</h3><p>Disponibles en Sonolibro y Audible.</p></div>
+        <div class="resumen-card"><h3>✍️ Sobre el Autor</h3><p>Conoce más sobre mí y mi trayectoria.</p></div>
+        <div class="resumen-card"><h3>📧 Contacto</h3><p>Escríbeme para colaboraciones o dudas.</p></div>
+      </div>
+    </div>
+  </section>
 
-        <!-- SOBRE EL AUTOR -->
-        <section id="autor" class="section">
-            <div style="text-align: center; padding: 60px 0;">
-                <h2 style="font-size: 36px; margin-bottom: 30px; color: #e50914;">Sobre el Autor</h2>
-                <p style="font-size: 20px; margin-bottom: 40px;">Conoce más sobre mi trayectoria y mi mundo literario</p>
-                <a href="https://www.amazon.es/stores/author/B00D7LJFRS/about" target="_blank" class="redirect-btn">
-                    Mi Perfil en Amazon
-                </a>
-            </div>
-        </section>
+  <!-- LIBROS -->
+  <section id="libros" class="section">
+    <div class="iframe-container">
+      <h2>📚 Mis Libros en Amazon</h2>
+      <iframe src="https://www.amazon.es/stores/author/B00D7LJFRS"></iframe>
+    </div>
+  </section>
 
-        <!-- CONTACTO -->
-        <section id="contacto" class="section">
-            <h2 style="text-align: center; font-size: 36px; margin-bottom: 40px; color: #e50914;">Contacto</h2>
-            
-            <div class="contacto-info">
-                <div class="contacto-item">
-                    <strong>Email:</strong> <a href="mailto:contacto@escritorcjbenito.es">contacto@escritorcjbenito.es</a>
-                </div>
-                <div class="contacto-item">
-                    <strong>Instagram:</strong> <a href="https://instagram.com/escritorcjbenito" target="_blank">@escritorcjbenito</a>
-                </div>
-                <div class="contacto-item">
-                    <strong>TikTok:</strong> <a href="https://www.tiktok.com/search?q=%40escritorcjbenito" target="_blank">
-                        @escritorcjbenito
-                        <span class="tiktok-icon"></span>
-                    </a>
-                </div>
-            </div>
+  <!-- AUDIOLIBROS -->
+  <section id="audiolibros" class="section">
+    <div class="iframe-container">
+      <h2>🎧 Audiolibros en Sonolibro</h2>
+      <iframe src="https://sonolibro.com/audiolibros/autor/cjbenito"></iframe>
+    </div>
+    <div class="iframe-container" style="margin-top: 40px;">
+      <h2>🎧 Audiolibros en Audible</h2>
+      <iframe src="https://www.audible.es/search?searchAuthor=Carlos+Benito"></iframe>
+    </div>
+  </section>
 
-            <div class="form-container">
-                <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px; color: #e50914;">Contacto y Colaboraciones</h3>
-                <form action="https://formsubmit.co/contacto@escritorcjbenito.es" method="POST">
-                    <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" id="nombre" name="nombre" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="asunto">Asunto</label>
-                        <input type="text" id="asunto" name="asunto" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="mensaje">Mensaje</label>
-                        <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
-                    </div>
-                    <input type="hidden" name="_next" value="https://escritorcjbenito.es/gracias">
-                    <input type="hidden" name="_subject" value="Nuevo mensaje desde la web">
-                    <button type="submit" class="submit-btn">Enviar Mensaje</button>
-                </form>
-            </div>
-        </section>
+  <!-- SOBRE EL AUTOR -->
+  <section id="autor" class="section">
+    <div class="iframe-container">
+      <h2>✍️ Sobre el Autor en Amazon</h2>
+      <iframe src="https://www.amazon.es/stores/author/B00D7LJFRS/about"></iframe>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="section">
+    <div class="contacto-info">
+      <div class="contacto-item"><strong>Email:</strong> <a href="mailto:contacto@escritorcjbenito.es">contacto@escritorcjbenito.es</a></div>
+      <div class="contacto-item"><strong>Instagram:</strong> <a href="https://instagram.com/escritorcjbenito" target="_blank">@escritorcjbenito</a></div>
+      <div class="contacto-item"><strong>TikTok:</strong> <a href="https://www.tiktok.com/search?q=%40escritorcjbenito" target="_blank">@escritorcjbenito</a></div>
     </div>
 
-    <script>
-        function showSection(sectionId) {
-            // Ocultar todas las secciones
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // Mostrar la sección seleccionada
-            const activeSection = document.getElementById(sectionId);
-            activeSection.classList.add('active');
-        }
-    </script>
+    <div class="form-container">
+      <h3>Contacto y Colaboraciones</h3>
+      <form acción="https://formsubmit.co/ contacto@escritorcjbenito.es" método="POST">
+        <input type="text" name="nombre" requerido>
+        <input type="email" name="email" requerido>
+        <button type="submit">Enviar</button>
+      </form> 
+    </div>
+  </section>
+
+</div>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+</script>
+
 </body>
 </html>
