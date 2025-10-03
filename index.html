@@ -1,247 +1,217 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CJ Benito - Escritor</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Georgia', serif;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-      color: #f5f5f5;
-      min-height: 100vh;
-    }
-    nav {
-      background: rgba(0,0,0,0.8);
-      backdrop-filter: blur(10px);
-      padding: 20px 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 20px rgba(229,9,20,0.3);
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-    }
-    nav a {
-      color: #f5f5f5;
-      text-decoration: none;
-      font-size: 18px;
-      padding: 10px 20px;
-      transition: color 0.3s ease;
-    }
-    nav a:hover {
-      color: #e50914;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-    .section {
-      display: none;
-      animation: fadeIn 0.8s ease-in-out;
-    }
-    .section.active {
-      display: block;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .inicio {
-      text-align: center;
-      padding: 60px 0;
-    }
-    .inicio h1 {
-      font-size: 48px;
-      margin-bottom: 30px;
-      background: linear-gradient(45deg, #e50914, #ff6b6b);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .resumen-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
-    }
-    .resumen-card {
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(10px);
-      padding: 30px;
-      border-radius: 15px;
-      border: 1px solid rgba(229,9,20,0.3);
-      transition: transform 0.3s ease;
-    }
-    .resumen-card:hover {
-      transform: translateY(-10px);
-    }
-    .resumen-card h3 {
-      color: #e50914;
-      margin-bottom: 15px;
-    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Georgia',serif;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#f5f5f5;min-height:100vh;display:flex;flex-direction:column;}
+    nav{background:rgba(0,0,0,.8);backdrop-filter:blur(10px);padding:20px 0;position:sticky;top:0;z-index:1000;box-shadow:0 2px 20px rgba(229,9,20,.3);}
+    nav ul{list-style:none;display:flex;justify-content:center;gap:40px;flex-wrap:wrap;}
+    nav button{background:none;border:none;color:#f5f5f5;font-size:18px;cursor:pointer;padding:10px 20px;transition:color .3s ease;}
+    nav button:hover{color:#e50914;}
+    .container{max-width:1200px;margin:0 auto;padding:40px 20px;flex:1;}
+    .section{display:none;animation:fadeIn .8s ease-in-out;}
+    .section.active{display:block;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+    .inicio{text-align:center;padding:60px 0;}
+    .inicio h1{font-size:48px;margin-bottom:30px;background:linear-gradient(45deg,#e50914,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .resumen-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-top:50px;}
+    .resumen-card{background:rgba(255,255,255,.1);backdrop-filter:blur(10px);padding:30px;border-radius:15px;border:1px solid rgba(229,9,20,.3);transition:transform .3s ease;cursor:pointer;}
+    .resumen-card:hover{transform:translateY(-10px);}
+    .resumen-card h3{color:#e50914;margin-bottom:15px;}
+    .audiocard{text-align:center;background:rgba(255,255,255,.05);border:1px solid rgba(229,9,20,.3);border-radius:15px;padding:30px;margin-bottom:40px;}
+    .audiocard img{max-width:200px;margin-bottom:20px;border-radius:10px;}
+    .audiocard h3{color:#e50914;margin-bottom:10px;}
+    .audiocard p{margin-bottom:20px;}
+    .btn-external{display:inline-block;padding:12px 30px;background:linear-gradient(45deg,#e50914,#ff6b6b);color:#fff;border-radius:30px;text-decoration:none;font-size:16px;transition:transform .3s ease;}
+    .btn-external:hover{transform:scale(1.05);}
+    .contacto-info{background:rgba(255,255,255,.05);backdrop-filter:blur(10px);padding:40px;border-radius:15px;margin-bottom:40px;text-align:center;}
+    .contacto-item{margin:20px 0;font-size:20px;}
+    .contacto-item a{color:#e50914;text-decoration:none;}
+    .form-container{background:rgba(255,255,255,.05);backdrop-filter:blur(10px);padding:40px;border-radius:15px;max-width:600px;margin:0 auto;}
+    .form-group{margin-bottom:25px;}
+    .form-group label{display:block;margin-bottom:10px;color:#e50914;}
+    .form-group input,.form-group textarea{width:100%;padding:15px;background:rgba(255,255,255,.1);border:1px solid rgba(229,9,20,.3);border-radius:8px;color:white;}
+    .submit-btn{width:100%;padding:15px;background:linear-gradient(45deg,#e50914,#ff6b6b);color:white;border:none;border-radius:30px;font-size:20px;cursor:pointer;}
+    footer{text-align:center;padding:20px 10px;font-size:14px;background:rgba(0,0,0,.5);}
+    footer a{color:#e50914;text-decoration:none;cursor:pointer;}
+    .popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;color:#000;padding:30px;border-radius:10px;max-width:400px;z-index:2000;display:none;}
+    .popup-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:1999;display:none;}
+    .popup h3{margin-bottom:10px;}
+    .popup button{margin-top:15px;padding:8px 16px;background:#e50914;color:#fff;border:none;border-radius:5px;cursor:pointer;}
 
-    /* Iframe styling */
-    .iframe-container {
-      width: 100%;
-      height: 80vh;
-      display: flex;
-      flex-direction: column;
-    }
-    .iframe-container h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #e50914;
-    }
-    iframe {
-      flex: 1;
-      width: 100%;
-      border: none;
-      border-radius: 10px;
-      background: #fff;
-    }
-
-    /* Contacto */
-    .contacto-info {
-      background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(10px);
-      padding: 40px;
-      border-radius: 15px;
-      margin-bottom: 40px;
-      text-align: center;
-    }
-    .contacto-item {
-      margin: 20px 0;
-      font-size: 20px;
-    }
-    .contacto-item a {
-      color: #e50914;
-      text-decoration: none;
-    }
-    .form-container {
-      background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(10px);
-      padding: 40px;
-      border-radius: 15px;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .form-group {
-      margin-bottom: 25px;
-    }
-    .form-group label {
-      display: block;
-      margin-bottom: 10px;
-      color: #e50914;
-    }
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 15px;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(229,9,20,0.3);
-      border-radius: 8px;
-      color: white;
-    }
-    .submit-btn {
-      width: 100%;
-      padding: 15px;
-      background: linear-gradient(45deg, #e50914, #ff6b6b);
-      color: white;
-      border: none;
-      border-radius: 30px;
-      font-size: 20px;
-      cursor: pointer;
-    }
+    /* Sobre el Autor */
+    .sobre-autor{background:rgba(255,255,255,.05);backdrop-filter:blur(10px);padding:40px;border-radius:15px;border:1px solid rgba(229,9,20,.3);text-align:center;}
+    .sobre-autor img{max-width:300px;border-radius:10px;margin-bottom:20px;}
+    .sobre-autor h2{color:#e50914;margin-bottom:15px;}
+    .sobre-autor p{line-height:1.6;font-size:1.05rem;}
   </style>
 </head>
 <body>
 
 <nav>
   <ul>
-    <li><a href="#" onclick="showSection('inicio')">Inicio</a></li>
-    <li><a href="#" onclick="showSection('libros')">Libros</a></li>
-    <li><a href="#" onclick="showSection('audiolibros')">Audiolibros</a></li>
-    <li><a href="#" onclick="showSection('autor')">Sobre el Autor</a></li>
-    <li><a href="#" onclick="showSection('contacto')">Contacto</a></li>
+    <li><button onclick="showSection('inicio')">Inicio</button></li>
+    <li><button onclick="showSection('audiolibros')">Audiolibros</button></li>
+    <li><button onclick="showSection('sobre-autor')">Sobre el Autor</button></li>
+    <li><button onclick="showSection('galeria-de-libros')">Galería de libros</button></li>
+    <li><button onclick="showSection('contacto')">Contacto</button></li>
   </ul>
 </nav>
 
-<div class="container">
+<div class="container" id="main-content">
 
   <!-- INICIO -->
   <section id="inicio" class="section active">
     <div class="inicio">
       <h1>CJ Benito</h1>
-      <p style="font-size: 24px; font-style: italic;">Donde las palabras se convierten en magia</p>
+      <p style="font-size:24px;font-style:italic;">Donde las palabras se convierten en magia</p>
       <div class="resumen-grid">
-        <div class="resumen-card"><h3>📚 Libros</h3><p>Explora mi catálogo completo en Amazon.</p></div>
-        <div class="resumen-card"><h3>🎧 Audiolibros</h3><p>Disponibles en Sonolibro y Audible.</p></div>
-        <div class="resumen-card"><h3>✍️ Sobre el Autor</h3><p>Conoce más sobre mí y mi trayectoria.</p></div>
-        <div class="resumen-card"><h3>📧 Contacto</h3><p>Escríbeme para colaboraciones o dudas.</p></div>
+        <div class="resumen-card" onclick="openExternal('https://www.amazon.es/stores/author/B00D7LJFRS')">
+          <h3>📚 Libros</h3>
+          <p>Explora mi catálogo completo en Amazon.</p>
+        </div>
+        <div class="resumen-card" onclick="showSection('audiolibros')">
+          <h3>🎧 Audiolibros</h3>
+          <p>Disponibles en Sonolibro y Audible.</p>
+        </div>
+        <div class="resumen-card" onclick="showSection('sobre-autor')">
+          <h3>✍️ Sobre el Autor</h3>
+          <p>Conoce más sobre mí y mi trayectoria.</p>
+        </div>
+        <div class="resumen-card" onclick="showSection('contacto')">
+          <h3>📧 Contacto</h3>
+          <p>Escríbeme para colaboraciones o dudas.</p>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- LIBROS -->
-  <section id="libros" class="section">
-    <div class="iframe-container">
-      <h2>📚 Mis Libros en Amazon</h2>
-      <iframe src="https://www.amazon.es/stores/author/B00D7LJFRS"></iframe>
     </div>
   </section>
 
   <!-- AUDIOLIBROS -->
   <section id="audiolibros" class="section">
-    <div class="iframe-container">
-      <h2>🎧 Audiolibros en Sonolibro</h2>
-      <iframe src="https://sonolibro.com/audiolibros/autor/cjbenito"></iframe>
+    <div class="audiocard">
+      <img src="https://sonolibro.com/wp-content/uploads/2021/06/logo-sonolibro.png" alt="Sonolibro">
+      <h3>Sonolibro</h3>
+      <p>Escucha mis audiolibros en la plataforma Sonolibro.</p>
+      <a class="btn-external" href="https://sonolibro.com/audiolibros/autor/cjbenito" target="_blank">Ir a Sonolibro</a>
     </div>
-    <div class="iframe-container" style="margin-top: 40px;">
-      <h2>🎧 Audiolibros en Audible</h2>
-      <iframe src="https://www.audible.es/search?searchAuthor=Carlos+Benito"></iframe>
+    <div class="audiocard">
+      <img src="https://m.media-amazon.com/images/G/01/adaptive/audible/logos/audible-logo-black._CB119867130_.png" alt="Audible">
+      <h3>Audible</h3>
+      <p>Disponible también en Audible, la tienda de audiolibros de Amazon.</p>
+      <a class="btn-external" href="https://www.audible.es/search?searchAuthor=Carlos+Benito" target="_blank">Ir a Audible</a>
     </div>
   </section>
 
   <!-- SOBRE EL AUTOR -->
-  <section id="autor" class="section">
-    <div class="iframe-container">
-      <h2>✍️ Sobre el Autor en Amazon</h2>
-      <iframe src="https://www.amazon.es/stores/author/B00D7LJFRS/about"></iframe>
+  <section id="sobre-autor" class="section">
+    <h1>Sobre el Autor</h1>
+    <div class="sobre-autor">
+      <img src="https://via.placeholder.com/400x250/FF0000/FFFFFF?text=Imagen+del+Autor" alt="CJ Benito">
+      <h2>CJ Benito</h2>
+      <p>
+        Carlos Javier Benito (CJ Benito) es un escritor español apasionado por el cine y la literatura romántica. Desde pequeño, las historias le acompañaron como refugio y como forma de entender el mundo. Su estilo mezcla emociones intensas, personajes complejos y finales que siempre dejan huella.
+        <br><br>
+        Ha publicado múltiples novelas que han conquistado a miles de lectores, transportándolos a universos donde el amor, el suspenso y la redención son los verdaderos protagonistas. Cuando no escribe, disfruta de largas sesiones de cine, cafés cargados y paseos por la playa con su perro.
+      </p>
     </div>
+  </section>
+
+  <!-- GALERÍA DE LIBROS -->
+  <section id="galeria-de-libros" class="section">
+    <h1>Galería de libros</h1>
+    <div class="galeria-grid" id="galeriaGrid"></div>
   </section>
 
   <!-- CONTACTO -->
   <section id="contacto" class="section">
     <div class="contacto-info">
-      <div class="contacto-item"><strong>Email:</strong> <a href="mailto:contacto@escritorcjbenito.es">contacto@escritorcjbenito.es</a></div>
-      <div class="contacto-item"><strong>Instagram:</strong> <a href="https://instagram.com/escritorcjbenito" target="_blank">@escritorcjbenito</a></div>
+      <div class="contacto-item"><strong>Email:</strong> <a href="mailto:cjbbooksoficial@gmail.com">cjbbooksoficial@gmail.com</a></div>
       <div class="contacto-item"><strong>TikTok:</strong> <a href="https://www.tiktok.com/search?q=%40escritorcjbenito" target="_blank">@escritorcjbenito</a></div>
     </div>
-
     <div class="form-container">
       <h3>Contacto y Colaboraciones</h3>
-      <form action="https://formsubmit.co/contacto@escritorcjbenito.es" method="POST">
-        <input type="text" name="name" required>
-        <input type="email" name="email" required>
-        <input type="text" name="asunto" required />
-        <textarea name="mensaje" rows="6" required>
-        <button type="submit">Send</button>
+      <form action="https://formsubmit.co/cjbbooksoficial@gmail.com" method="POST">
+        <div class="form-group"><label>Nombre</label><input type="text" name="nombre" required></div>
+        <div class="form-group"><label>Email</label><input type="email" name="email" required></div>
+        <div class="form-group"><label>Asunto</label><input type="text" name="asunto" required></div>
+        <div class="form-group"><label>Mensaje</label><textarea name="mensaje" rows="6" required></textarea></div>
+        <input type="hidden" name="_next" value="https://escritorcjbenito.es/gracias">
+        <input type="hidden" name="_subject" value="Nuevo mensaje desde la web">
+        <button type="submit" class="submit-btn">Enviar Mensaje</button>
       </form>
     </div>
   </section>
 
 </div>
 
+<footer>
+  © 2025 Derechos reservados · C. J. Benito  
+  <br>
+  <a onclick="showPopup('privacidad')">Política de privacidad</a> |
+  <a onclick="showPopup('terminos')">Términos de uso</a> |
+  <a onclick="showPopup('cookies')">Cookies</a>
+</footer>
+
+<!-- Popups -->
+<div class="popup-overlay" id="popupOverlay" onclick="closePopup()"></div>
+<div class="popup" id="popup">
+  <div id="popupContent"></div>
+  <button onclick="closePopup()">Cerrar</button>
+</div>
+
 <script>
-  function showSection(id) {
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  function showSection(id){
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
+    if(id==='galeria-de-libros') cargarGaleria();
+  }
+  function openExternal(url){ window.open(url, '_blank'); }
+  function showPopup(tipo){
+    const contenido = {
+      privacidad: `<h3>Política de privacidad</h3><p>Recopilamos únicamente los datos necesarios para responderte o gestionar colaboraciones. No compartimos tu información con terceros. Puedes solicitar su eliminación en cualquier momento.</p>`,
+      terminos: `<h3>Términos de uso</h3><p>El contenido de esta web es propiedad de C. J. Benito. Puedes compartir enlaces siempre que cites la fuente. Queda prohibida la reproducción total o parcial sin permiso explícito.</p>`,
+      cookies: `<h3>Cookies</h3><p>Esta web utiliza cookies únicamente para funciones básicas de navegación y estadísticas anónimas. No almacenamos datos personales mediante cookies.</p>`
+    };
+    document.getElementById('popupContent').innerHTML = contenido[tipo];
+    document.getElementById('popup').style.display = 'block';
+    document.getElementById('popupOverlay').style.display = 'block';
+  }
+  function closePopup(){
+    document.getElementById('popup').style.display = 'none';
+    document.getElementById('popupOverlay').style.display = 'none';
+  }
+
+  // Galería de libros (55 recuadros de ejemplo)
+  function cargarGaleria(){
+    const libros = [
+      {titulo:"Libro 1",imagen:"https://via.placeholder.com/220x300/FF0000/FFFFFF?text=Libro+1",sinopsis:"Sinopsis breve del libro 1.",genero:"Romántico",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 2",imagen:"https://via.placeholder.com/220x300/00FF00/FFFFFF?text=Libro+2",sinopsis:"Sinopsis breve del libro 2.",genero:"Thriller",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      // ... (copia y pega el mismo formato hasta 55)
+      {titulo:"Libro 55",imagen:"https://via.placeholder.com/220x300/0000FF/FFFFFF?text=Libro+55",sinopsis:"Sinopsis breve del libro 55.",genero:"Histórica",comprar:"https://www.amazon.es/dp/B00D7LJFRS"}
+    ];
+    // Generador rápido de 55 portadas (opcional)
+    while(libros.length < 55){
+      libros.push({
+        titulo:`Libro ${libros.length+1}`,
+        imagen:`https://via.placeholder.com/220x300/${Math.floor(Math.random()*16777215).toString(16)}/FFFFFF?text=Libro+${libros.length+1}`,
+        sinopsis:`Sinopsis breve del libro ${libros.length+1}.`,
+        genero:["Romántico","Thriller","Histórica","Fantasía","Ciencia Ficción","Misterio"][Math.floor(Math.random()*6)],
+        comprar:"https://www.amazon.es/dp/B00D7LJFRS"
+      });
+    }
+    const contenedor = document.getElementById('galeriaGrid');
+    contenedor.innerHTML = libros.map(libro => `
+      <div class="galeria-item">
+        <img src="${libro.imagen}" alt="${libro.titulo}">
+        <h4>${libro.titulo}</h4>
+        <div class="genero">${libro.genero}</div>
+        <div class="sinopsis">${libro.sinopsis}</div>
+        <a class="btn-comprar" href="${libro.comprar}" target="_blank">Comprar</a>
+      </div>
+    `).join('');
   }
 </script>
 
