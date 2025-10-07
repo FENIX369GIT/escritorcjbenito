@@ -42,11 +42,21 @@
     .popup h3{margin-bottom:10px;}
     .popup button{margin-top:15px;padding:8px 16px;background:#e50914;color:#fff;border:none;border-radius:5px;cursor:pointer;}
 
-    /* Sobre el Autor */
-    .sobre-autor{background:rgba(255,255,255,.05);backdrop-filter:blur(10px);padding:40px;border-radius:15px;border:1px solid rgba(229,9,20,.3);text-align:center;}
-    .sobre-autor img{max-width:300px;border-radius:10px;margin-bottom:20px;}
-    .sobre-autor h2{color:#e50914;margin-bottom:15px;}
-    .sobre-autor p{line-height:1.6;font-size:1.05rem;}
+    /* Galería de libros (27 únicos) */
+    .galeria-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;padding:20px 0;}
+    .galeria-item{background:rgba(255,255,255,.1);border:1px solid rgba(229,9,20,.3);border-radius:10px;padding:15px;display:flex;flex-direction:column;justify-content:space-between;}
+    .galeria-item img{max-width:100%;height:200px;object-fit:cover;border-radius:5px;}
+    .galeria-item h4{color:#e50914;margin:10px 0 5px;font-size:1.1rem;}
+    .galeria-item .genero{font-size:.9rem;color:#ff6b6b;margin-bottom:8px;}
+    .galeria-item .sinopsis{font-size:.85rem;line-height:1.3;flex:1;margin-bottom:10px;}
+    .galeria-item .btn-comprar{align-self:center;padding:8px 20px;background:linear-gradient(45deg,#e50914,#ff6b6b);color:#fff;border-radius:20px;text-decoration:none;font-size:.85rem;transition:transform .2s ease;}
+    .galeria-item .btn-comprar:hover{transform:scale(1.05);}
+
+    /* Telegram en Contacto */
+    .telegram-box{background:rgba(255,255,255,.05);border:1px solid rgba(229,9,20,.3);border-radius:10px;padding:20px;margin-top:20px;text-align:center;}
+    .telegram-box a{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;background:#0088cc;color:#fff;border-radius:20px;text-decoration:none;font-size:1rem;transition:background .3s ease;}
+    .telegram-box a:hover{background:#006ba3;}
+    .telegram-box .icono{font-size:1.4rem;}
   </style>
 </head>
 <body>
@@ -69,8 +79,8 @@
       <h1>CJ Benito</h1>
       <p style="font-size:24px;font-style:italic;">Donde las palabras se convierten en magia</p>
       <div class="resumen-grid">
-        <div class="resumen-card" onclick="openExternal('https://www.amazon.es/stores/author/B00D7LJFRS')">
-          <h3>📚 Libros</h3>
+        <div class="resumen-card" onclick="showSection('galeria-de-libros')">
+          <h3>📚 Galería de libros</h3>
           <p>Explora mi catálogo completo en Amazon.</p>
         </div>
         <div class="resumen-card" onclick="showSection('audiolibros')">
@@ -119,7 +129,7 @@
     </div>
   </section>
 
-  <!-- GALERÍA DE LIBROS -->
+  <!-- GALERÍA DE LIBROS (27 únicos) -->
   <section id="galeria-de-libros" class="section">
     <h1>Galería de libros</h1>
     <div class="galeria-grid" id="galeriaGrid"></div>
@@ -142,6 +152,14 @@
         <input type="hidden" name="_subject" value="Nuevo mensaje desde la web">
         <button type="submit" class="submit-btn">Enviar Mensaje</button>
       </form>
+    </div>
+
+    <!-- ✅ Nuevo: enlace a Telegram -->
+    <div class="telegram-box">
+      <a href="https://t.me/+pBX516bH4qFmNWQ0" target="_blank">
+        <span class="icono">📨</span>
+        Grupo del autor en Telegram
+      </a>
     </div>
   </section>
 
@@ -179,29 +197,38 @@
     document.getElementById('popup').style.display = 'block';
     document.getElementById('popupOverlay').style.display = 'block';
   }
-  function closePopup(){
-    document.getElementById('popup').style.display = 'none';
-    document.getElementById('popupOverlay').style.display = 'none';
-  }
 
-  // Galería de libros (55 recuadros de ejemplo)
+  // Galería de libros (27 únicos)
   function cargarGaleria(){
     const libros = [
       {titulo:"Libro 1",imagen:"https://via.placeholder.com/220x300/FF0000/FFFFFF?text=Libro+1",sinopsis:"Sinopsis breve del libro 1.",genero:"Romántico",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
       {titulo:"Libro 2",imagen:"https://via.placeholder.com/220x300/00FF00/FFFFFF?text=Libro+2",sinopsis:"Sinopsis breve del libro 2.",genero:"Thriller",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
-      // ... (copia y pega el mismo formato hasta 55)
-      {titulo:"Libro 55",imagen:"https://via.placeholder.com/220x300/0000FF/FFFFFF?text=Libro+55",sinopsis:"Sinopsis breve del libro 55.",genero:"Histórica",comprar:"https://www.amazon.es/dp/B00D7LJFRS"}
+      {titulo:"Libro 3",imagen:"https://via.placeholder.com/220x300/0000FF/FFFFFF?text=Libro+3",sinopsis:"Sinopsis breve del libro 3.",genero:"Histórica",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 4",imagen:"https://via.placeholder.com/220x300/FFFF00/000000?text=Libro+4",sinopsis:"Sinopsis breve del libro 4.",genero:"Fantasía",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 5",imagen:"https://via.placeholder.com/220x300/FF00FF/FFFFFF?text=Libro+5",sinopsis:"Sinopsis breve del libro 5.",genero:"Ciencia Ficción",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 6",imagen:"https://via.placeholder.com/220x300/00FFFF/000000?text=Libro+6",sinopsis:"Sinopsis breve del libro 6.",genero:"Misterio",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 7",imagen:"https://via.placeholder.com/220x300/800080/FFFFFF?text=Libro+7",sinopsis:"Sinopsis breve del libro 7.",genero:"Romántico",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 8",imagen:"https://via.placeholder.com/220x300/008080/FFFFFF?text=Libro+8",sinopsis:"Sinopsis breve del libro 8.",genero:"Thriller",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 9",imagen:"https://via.placeholder.com/220x300/FFA500/000000?text=Libro+9",sinopsis:"Sinopsis breve del libro 9.",genero:"Histórica",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 10",imagen:"https://via.placeholder.com/220x300/A52A2A/FFFFFF?text=Libro+10",sinopsis:"Sinopsis breve del libro 10.",genero:"Fantasía",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 11",imagen:"https://via.placeholder.com/220x300/DC143C/FFFFFF?text=Libro+11",sinopsis:"Sinopsis breve del libro 11.",genero:"Ciencia Ficción",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 12",imagen:"https://via.placeholder.com/220x300/4B0082/FFFFFF?text=Libro+12",sinopsis:"Sinopsis breve del libro 12.",genero:"Misterio",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 13",imagen:"https://via.placeholder.com/220x300/2F4F4F/FFFFFF?text=Libro+13",sinopsis:"Sinopsis breve del libro 13.",genero:"Romántico",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 14",imagen:"https://via.placeholder.com/220x300/708090/FFFFFF?text=Libro+14",sinopsis:"Sinopsis breve del libro 14.",genero:"Thriller",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 15",imagen:"https://via.placeholder.com/220x300/B22222/FFFFFF?text=Libro+15",sinopsis:"Sinopsis breve del libro 15.",genero:"Histórica",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 16",imagen:"https://via.placeholder.com/220x300/A0522D/FFFFFF?text=Libro+16",sinopsis:"Sinopsis breve del libro 16.",genero:"Fantasía",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 17",imagen:"https://via.placeholder.com/220x300/CD853F/FFFFFF?text=Libro+17",sinopsis:"Sinopsis breve del libro 17.",genero:"Ciencia Ficción",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 18",imagen:"https://via.placeholder.com/220x300/DEB887/000000?text=Libro+18",sinopsis:"Sinopsis breve del libro 18.",genero:"Misterio",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 19",imagen:"https://via.placeholder.com/220x300/F0E68C/000000?text=Libro+19",sinopsis:"Sinopsis breve del libro 19.",genero:"Romántico",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 20",imagen:"https://via.placeholder.com/220x300/BDB76B/000000?text=Libro+20",sinopsis:"Sinopsis breve del libro 20.",genero:"Thriller",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 21",imagen:"https://via.placeholder.com/220x300/BC8F8F/FFFFFF?text=Libro+21",sinopsis:"Sinopsis breve del libro 21.",genero:"Histórica",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 22",imagen:"https://via.placeholder.com/220x300/F4A460/000000?text=Libro+22",sinopsis:"Sinopsis breve del libro 22.",genero:"Fantasía",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 23",imagen:"https://via.placeholder.com/220x300/D2691E/FFFFFF?text=Libro+23",sinopsis:"Sinopsis breve del libro 23.",genero:"Ciencia Ficción",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 24",imagen:"https://via.placeholder.com/220x300/CD5C5C/FFFFFF?text=Libro+24",sinopsis:"Sinopsis breve del libro 24.",genero:"Misterio",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 25",imagen:"https://via.placeholder.com/220x300/8B4513/FFFFFF?text=Libro+25",sinopsis:"Sinopsis breve del libro 25.",genero:"Romántico",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 26",imagen:"https://via.placeholder.com/220x300/A52A2A/FFFFFF?text=Libro+26",sinopsis:"Sinopsis breve del libro 26.",genero:"Thriller",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
+      {titulo:"Libro 27",imagen:"https://via.placeholder.com/220x300/FFE4B5/000000?text=Libro+27",sinopsis:"Sinopsis breve del libro 27.",genero:"Histórica",comprar:"https://www.amazon.es/dp/B00D7LJFRS"}
     ];
-    // Generador rápido de 55 portadas (opcional)
-    while(libros.length < 55){
-      libros.push({
-        titulo:`Libro ${libros.length+1}`,
-        imagen:`https://via.placeholder.com/220x300/${Math.floor(Math.random()*16777215).toString(16)}/FFFFFF?text=Libro+${libros.length+1}`,
-        sinopsis:`Sinopsis breve del libro ${libros.length+1}.`,
-        genero:["Romántico","Thriller","Histórica","Fantasía","Ciencia Ficción","Misterio"][Math.floor(Math.random()*6)],
-        comprar:"https://www.amazon.es/dp/B00D7LJFRS"
-      });
-    }
     const contenedor = document.getElementById('galeriaGrid');
     contenedor.innerHTML = libros.map(libro => `
       <div class="galeria-item">
