@@ -22,7 +22,7 @@
     .resumen-card:hover{transform:translateY(-10px);}
     .resumen-card h3{color:#e50914;margin-bottom:15px;}
     .audiocard{text-align:center;background:rgba(255,255,255,.05);border:1px solid rgba(229,9,20,.3);border-radius:15px;padding:30px;margin-bottom:40px;}
-    .audiocard img{max-width:200px;margin-bottom:20px;border-radius:10px;}
+    .audiocard img{max-width:200px;border-radius:10px;}
     .audiocard h3{color:#e50914;margin-bottom:10px;}
     .audiocard p{margin-bottom:20px;}
     .btn-external{display:inline-block;padding:12px 30px;background:linear-gradient(45deg,#e50914,#ff6b6b);color:#fff;border-radius:30px;text-decoration:none;font-size:16px;transition:transform .3s ease;}
@@ -42,17 +42,15 @@
     .popup h3{margin-bottom:10px;}
     .popup button{margin-top:15px;padding:8px 16px;background:#e50914;color:#fff;border:none;border-radius:5px;cursor:pointer;}
 
-    /* Galería de libros (27 únicos) */
-    .galeria-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;padding:20px 0;}
-    .galeria-item{background:rgba(255,255,255,.1);border:1px solid rgba(229,9,20,.3);border-radius:10px;padding:15px;display:flex;flex-direction:column;justify-content:space-between;}
-    .galeria-item img{max-width:100%;height:200px;object-fit:cover;border-radius:5px;}
-    .galeria-item h4{color:#e50914;margin:10px 0 5px;font-size:1.1rem;}
-    .galeria-item .genero{font-size:.9rem;color:#ff6b6b;margin-bottom:8px;}
-    .galeria-item .sinopsis{font-size:.85rem;line-height:1.3;flex:1;margin-bottom:10px;}
-    .galeria-item .btn-comprar{align-self:center;padding:8px 20px;background:linear-gradient(45deg,#e50914,#ff6b6b);color:#fff;border-radius:20px;text-decoration:none;font-size:.85rem;transition:transform .2s ease;}
+    .galeria-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,max-content));gap:15px;padding:20px 0;justify-content:center;}
+    .galeria-item{background:rgba(255,255,255,.1);border:1px solid rgba(229,9,20,.3);border-radius:10px;padding:10px;display:flex;flex-direction:column;width:fit-content;}
+    .galeria-item img{max-width:180px;height:auto;border-radius:5px;object-fit:contain;}
+    .galeria-item h4{color:#e50914;margin:8px 0 4px;font-size:1rem;text-align:center;}
+    .galeria-item .genero{font-size:.8rem;color:#ff6b6b;text-align:center;margin-bottom:6px;}
+    .galeria-item .sinopsis{font-size:.75rem;line-height:1.3;flex:1;margin-bottom:8px;text-align:center;max-width:180px;}
+    .galeria-item .btn-comprar{align-self:center;padding:6px 16px;background:linear-gradient(45deg,#e50914,#ff6b6b);color:#fff;border-radius:15px;text-decoration:none;font-size:.75rem;transition:transform .2s ease;}
     .galeria-item .btn-comprar:hover{transform:scale(1.05);}
 
-    /* Telegram en Contacto */
     .telegram-box{background:rgba(255,255,255,.05);border:1px solid rgba(229,9,20,.3);border-radius:10px;padding:20px;margin-top:20px;text-align:center;}
     .telegram-box a{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;background:#0088cc;color:#fff;border-radius:20px;text-decoration:none;font-size:1rem;transition:background .3s ease;}
     .telegram-box a:hover{background:#006ba3;}
@@ -73,7 +71,6 @@
 
 <div class="container" id="main-content">
 
-  <!-- INICIO -->
   <section id="inicio" class="section active">
     <div class="inicio">
       <h1>CJ Benito</h1>
@@ -99,7 +96,6 @@
     </div>
   </section>
 
-  <!-- AUDIOLIBROS -->
   <section id="audiolibros" class="section">
     <div class="audiocard">
       <img src="https://sonolibro.com/wp-content/uploads/2021/06/logo-sonolibro.png" alt="Sonolibro">
@@ -115,33 +111,24 @@
     </div>
   </section>
 
-  <!-- SOBRE EL AUTOR -->
   <section id="sobre-autor" class="section">
     <h1>Sobre el Autor</h1>
     <div class="sobre-autor">
-      <img src="https://m.media-amazon.com/images/S/amzn-author-media-prod/l8urrfirl047f0cklugph0nv36._SX300_CR0%2C0%2C300%2C300_.jpg" alt="CJ Benito">
+      <img src="https://via.placeholder.com/400x250/FF0000/FFFFFF?text=Imagen+del+Autor" alt="CJ Benito">
       <h2>CJ Benito</h2>
       <p>
-       C. J. Benito se convirtió en Bestseller internacional con la trilogía romántica "Duncan y Tris", nos mostró su fantasía por primera vez con la bilogía "Una extraña en mi ventana", debuto en el thriller con la trilogía "Deker Harrison" y nos hizo reír con "49 penurias de Troy", manteniendo siempre ese toque romántico que le caracteriza.
+        Carlos Javier Benito (CJ Benito) es un escritor español apasionado por el cine y la literatura romántica. Desde pequeño, las historias le acompañaron como refugio y como forma de entender el mundo. Su estilo mezcla emociones intensas, personajes complejos y finales que siempre dejan huella.
         <br><br>
-       Ha escrito 37 libros que incluyen diversos géneros literarios entre los que destaca la novela romántica, es fan de la fantasía, el cine y las series, posee una imaginación que no parece tener límites. 
-        <br><br>
-       Disfruta ahora de "Ojos azules" y su última novela "No soy lo que parece".
-        <br><br>
-       
-
-
+        Ha publicado múltiples novelas que han conquistado a miles de lectores, transportándolos a universos donde el amor, el suspenso y la redención son los verdaderos protagonistas. Cuando no escribe, disfruta de largas sesiones de cine, cafés cargados y paseos por la playa con su perro.
       </p>
     </div>
   </section>
 
-  <!-- GALERÍA DE LIBROS (27 únicos) -->
   <section id="galeria-de-libros" class="section">
     <h1>Galería de libros</h1>
     <div class="galeria-grid" id="galeriaGrid"></div>
   </section>
 
-  <!-- CONTACTO -->
   <section id="contacto" class="section">
     <div class="contacto-info">
       <div class="contacto-item"><strong>Email:</strong> <a href="mailto:cjbbooksoficial@gmail.com">cjbbooksoficial@gmail.com</a></div>
@@ -159,8 +146,6 @@
         <button type="submit" class="submit-btn">Enviar Mensaje</button>
       </form>
     </div>
-
-    <!-- ✅ Nuevo: enlace a Telegram -->
     <div class="telegram-box">
       <a href="https://t.me/+pBX516bH4qFmNWQ0" target="_blank">
         <span class="icono">📨</span>
@@ -174,12 +159,11 @@
 <footer>
   © 2025 Derechos reservados · C. J. Benito  
   <br>
-  <a onclick="showPopup('privacidad')">Política de privacidad</a> |
-  <a onclick="showPopup('terminos')">Términos de uso</a> |
-  <a onclick="showPopup('cookies')">Cookies</a>
+    <a onclick="showPopup('privacidad')">Política de privacidad</a> |
+    <a onclick="showPopup('terminos')">Términos de uso</a> |
+    <a onclick="showPopup('cookies')">Cookies</a>
 </footer>
 
-<!-- Popups -->
 <div class="popup-overlay" id="popupOverlay" onclick="closePopup()"></div>
 <div class="popup" id="popup">
   <div id="popupContent"></div>
@@ -203,38 +187,43 @@
     document.getElementById('popup').style.display = 'block';
     document.getElementById('popupOverlay').style.display = 'block';
   }
+  function closePopup(){
+    document.getElementById('popup').style.display = 'none';
+    document.getElementById('popupOverlay').style.display = 'none';
+  }
 
-  // Galería de libros (27 únicos)
   function cargarGaleria(){
     const libros = [
-      {titulo:"Deja de torturarme (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/71Vr4XRm+7L._SY425_.jpg", comprar:"https://www.amazon.es/Deja-torturarme-C-J-Benito-ebook/dp/B079JXSHVC?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.3kBjhIgDXR_w12zQCLipZwEN1LVTpMd-beYnLH6JilYaE19CdcjVY9lBnqd2BsalNqQ3K86kSS0d3MTtrS68P7byk92LiALv2QF-jbuF0Tne7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xF1riM8G17FqkttMLfFq9qr7L_5Swgt7y3I3A1p709Ze54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.Aftt0CJvy-kR2fvs_60T_qGxMUZy6sFurefMcLTPBtw&dib_tag=AUTHOR"},
-      {titulo:"La debilidad del marine (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/71eCNC5ZVaL._SY425_.jpg",comprar:"https://www.amazon.es/debilidad-del-marine-C-Benito-ebook/dp/B079JYXGCX?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.3kBjhIgDXR_w12zQCLipZwEN1LVTpMd-beYnLH6JilYaE19CdcjVY9lBnqd2BsalNqQ3K86kSS0d3MTtrS68P7byk92LiALv2QF-jbuF0Tne7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xF1riM8G17FqkttMLfFq9qr7L_5Swgt7y3I3A1p709Ze54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.Aftt0CJvy-kR2fvs_60T_qGxMUZy6sFurefMcLTPBtw&dib_tag=AUTHOR"},
-      {titulo:"Duncan y Tris (TRILOGÍA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/713S6xeXusL._SY425_.jpg",comprar:"https://www.amazon.es/Trilog%C3%ADa-Duncan-Tris-C-Benito-ebook/dp/B0768Z87PY?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.3kBjhIgDXR_w12zQCLipZwEN1LVTpMd-beYnLH6JilYaE19CdcjVY9lBnqd2BsalNqQ3K86kSS0d3MTtrS68P7byk92LiALv2QF-jbuF0Tne7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xF1riM8G17FqkttMLfFq9qr7L_5Swgt7y3I3A1p709Ze54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.Aftt0CJvy-kR2fvs_60T_qGxMUZy6sFurefMcLTPBtw&dib_tag=AUTHOR"},
-      {titulo:"No soy lo que parece (Historia completa)",imagen:"https://m.media-amazon.com/images/I/81Ea1TDtBlL._SY425_.jpg",comprar:"https://www.amazon.es/No-soy-lo-que-parece-ebook/dp/B0BBJMDBM3?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.3kBjhIgDXR_w12zQCLipZwEN1LVTpMd-beYnLH6JilYaE19CdcjVY9lBnqd2BsalNqQ3K86kSS0d3MTtrS68P7byk92LiALv2QF-jbuF0Tne7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xF1riM8G17FqkttMLfFq9qr7L_5Swgt7y3I3A1p709Ze54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.Aftt0CJvy-kR2fvs_60T_qGxMUZy6sFurefMcLTPBtw&dib_tag=AUTHOR"},
-      {titulo:"Domíname si puedes (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/719rCyYSqoL._SY425_.jpg",comprar:"https://www.amazon.es/Dom%C3%ADname-si-puedes-C-Benito-ebook/dp/B079K2ZH7B?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.tzCbmqtNRIGaTdJSdAX5xlA6hqEYaF5g1WA86J48t7RuJFsyvxTrYbRVspLpcHR_htpJlgIXgBfkBz2fwV1uALbyk92LiALv2QF-jbuF0Tne7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xF1riM8G17FqkttMLfFq9qr7L_5Swgt7y3I3A1p709Ze54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.DM8JlfcTQkpnmlJ_vC6gLaS3bU1ZdpIYGwZKGNutst4&dib_tag=AUTHOR"},
-      {titulo:"49 penurias de Troy (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/81sCkqlbDLL._SY425_.jpg",comprar:"https://www.amazon.es/49-penurias-Troy-C-Benito-ebook/dp/B079K64FNQ?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.tzCbmqtNRIGaTdJSdAX5xlA6hqEYaF5g1WA86J48t7RuJFsyvxTrYbRVspLpcHR_htpJlgIXgBfkBz2fwV1uALbyk92LiALv2QF-jbuF0Tne7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xF1riM8G17FqkttMLfFq9qr7L_5Swgt7y3I3A1p709Ze54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.DM8JlfcTQkpnmlJ_vC6gLaS3bU1ZdpIYGwZKGNutst4&dib_tag=AUTHOR"},
-      {titulo:"Deker Harrison (TRILOGÍA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/714uu+bVm6L._SY425_.jpg",comprar:"https://www.amazon.es/Trilog%C3%ADa-Deker-Harrison-C-Benito-ebook/dp/B076YF4LQV?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.tzCbmqtNRIGaTdJSdAX5xlA6hqEYaF5g1WA86J48t7RuJFsyvxTrYbRVspLpcHR_htpJlgIXgBfkBz2fwV1uALbyk92LiALv2QF-jbuF0Tne7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xF1riM8G17FqkttMLfFq9qr7L_5Swgt7y3I3A1p709Ze54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.DM8JlfcTQkpnmlJ_vC6gLaS3bU1ZdpIYGwZKGNutst4&dib_tag=AUTHOR"},
-      {titulo:"Sacrificio por amor (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/81c4l6jdnpL._SY425_.jpg",comprar:"https://www.amazon.es/Sacrificio-coraz%C3%B3n-Historia-completa-Duncan-ebook/dp/B088P9R54Y?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.tzCbmqtNRIGaTdJSdAX5xlA6hqEYaF5g1WA86J48t7RuJFsyvxTrYbRVspLpcHR_htpJlgIXgBfkBz2fwV1uALbyk92LiALv2QF-jbuF0Tne7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xF1riM8G17FqkttMLfFq9qr7L_5Swgt7y3I3A1p709Ze54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.DM8JlfcTQkpnmlJ_vC6gLaS3bU1ZdpIYGwZKGNutst4&dib_tag=AUTHOR"},
-      {titulo:"Hasta las estrellas se enamoran (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/71ObreP6GtL._SY425_.jpg",comprar:"https://www.amazon.es/Hasta-las-estrellas-se-enamoran-ebook/dp/B079JYDQ4X?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.tzCbmqtNRIGaTdJSdAX5xlA6hqEYaF5g1WA86J48t7RuJFsyvxTrYbRVspLpcHR_htpJlgIXgBfkBz2fwV1uALbyk92LiALv2QF-jbuF0Tne7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xF1riM8G17FqkttMLfFq9qr7L_5Swgt7y3I3A1p709Ze54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.DM8JlfcTQkpnmlJ_vC6gLaS3bU1ZdpIYGwZKGNutst4&dib_tag=AUTHOR"},
-      {titulo:"Secretaria y descarada (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/71LkwqPstFL._SY425_.jpg",comprar:"https://www.amazon.es/Secretaria-descarada-CARLOS-JAVIER-Benito-ebook/dp/B08RVWDKH9?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.tzCbmqtNRIGaTdJSdAX5xlA6hqEYaF5g1WA86J48t7RuJFsyvxTrYbRVspLpcHR_htpJlgIXgBfkBz2fwV1uALbyk92LiALv2QF-jbuF0Tne7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xF1riM8G17FqkttMLfFq9qr7L_5Swgt7y3I3A1p709Ze54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.DM8JlfcTQkpnmlJ_vC6gLaS3bU1ZdpIYGwZKGNutst4&dib_tag=AUTHOR"},
-      {titulo:"Yo no soy de las que se enamoran (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/71e5xTfaIXL._SY425_.jpg",comprar:"https://www.amazon.es/Yo-soy-las-que-enamoran-ebook/dp/B07H6HHDW5?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.tzCbmqtNRIGaTdJSdAX5xlA6hqEYaF5g1WA86J48t7RuJFsyvxTrYbRVspLpcHR_htpJlgIXgBfkBz2fwV1uALbyk92LiALv2QF-jbuF0Tne7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xF1riM8G17FqkttMLfFq9qr7L_5Swgt7y3I3A1p709Ze54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.DM8JlfcTQkpnmlJ_vC6gLaS3bU1ZdpIYGwZKGNutst4&dib_tag=AUTHOR"},
-      {titulo:"Una semana de lujo (Un amor prohibido) (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/714xnLuXWsL._SY425_.jpg",,comprar:"https://www.amazon.es/Una-semana-lujo-amor-prohibido-ebook/dp/B079JZ18Z5?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.tzCbmqtNRIGaTdJSdAX5xlA6hqEYaF5g1WA86J48t7RuJFsyvxTrYbRVspLpcHR_htpJlgIXgBfkBz2fwV1uALbyk92LiALv2QF-jbuF0Tne7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xF1riM8G17FqkttMLfFq9qr7L_5Swgt7y3I3A1p709Ze54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.DM8JlfcTQkpnmlJ_vC6gLaS3bU1ZdpIYGwZKGNutst4&dib_tag=AUTHOR"},
-      {titulo:"No te soporto pero te adoro (BILOGÍA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/71EEhokEEHL._SY425_.jpg",comprar:"https://www.amazon.es/Bilog%C3%ADa-No-soporto-pero-adoro-ebook/dp/B0768Z59VY?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.tzCbmqtNRIGaTdJSdAX5xlA6hqEYaF5g1WA86J48t7RuJFsyvxTrYbRVspLpcHR_htpJlgIXgBfkBz2fwV1uALbyk92LiALv2QF-jbuF0Tne7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xF1riM8G17FqkttMLfFq9qr7L_5Swgt7y3I3A1p709Ze54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.DM8JlfcTQkpnmlJ_vC6gLaS3bU1ZdpIYGwZKGNutst4&dib_tag=AUTHOR"},
-      {titulo:"La bella y el escritor (BILOGÍA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/71Pgd34rZSL._SY425_.jpg",comprar:"https://www.amazon.es/Bilog%C3%ADa-bella-y-el-escritor-ebook/dp/B07MDLJBJ6?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.tzCbmqtNRIGaTdJSdAX5xlA6hqEYaF5g1WA86J48t7RuJFsyvxTrYbRVspLpcHR_htpJlgIXgBfkBz2fwV1uALbyk92LiALv2QF-jbuF0Tne7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xF1riM8G17FqkttMLfFq9qr7L_5Swgt7y3I3A1p709Ze54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.DM8JlfcTQkpnmlJ_vC6gLaS3bU1ZdpIYGwZKGNutst4&dib_tag=AUTHOR"},
-      {titulo:"Solo es una aventura (BILOGÍA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/81TnZnyNxyL._SY425_.jpg",comprar:"https://www.amazon.es/Bilog%C3%ADa-Solo-es-una-aventura-ebook/dp/B0768ZZ5PK?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.tzCbmqtNRIGaTdJSdAX5xlA6hqEYaF5g1WA86J48t7RuJFsyvxTrYbRVspLpcHR_htpJlgIXgBfkBz2fwV1uALbyk92LiALv2QF-jbuF0Tne7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xF1riM8G17FqkttMLfFq9qr7L_5Swgt7y3I3A1p709Ze54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.DM8JlfcTQkpnmlJ_vC6gLaS3bU1ZdpIYGwZKGNutst4&dib_tag=AUTHOR"},
-      {titulo:"Mi eterna protegida (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/71bHXtJI22L._SY425_.jpg",comprar:"https://www.amazon.es/Mi-eterna-protegida-C-Benito-ebook/dp/B079JWXN9N?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.tzCbmqtNRIGaTdJSdAX5xgmjJg5O_5QsFh1KruTbIVSfymtE3c1GVUGC-SWCVTkneIO_qekHs55nuweAS8lhNaomo0F1S_Vc9SKogw9yvTLe7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xF1riM8G17FqkttMLfFq9qr7L_5Swgt7y3I3A1p709Ze54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.PZLH_Cu90Mja6ctt7gBYl8anbwnyfGz0LQFLf9v5z90&dib_tag=AUTHOR"},
-      {titulo:"No me busques en Navidad (BILOGÍA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/71YLjNlAkvL._SY425_.jpg",comprar:"https://www.amazon.es/NO-BUSQUES-NAVIDAD-HISTORIA-COMPLETA-ebook/dp/B079JYYVRY?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.tzCbmqtNRIGaTdJSdAX5xgmjJg5O_5QsFh1KruTbIVSfymtE3c1GVUGC-SWCVTkneIO_qekHs55nuweAS8lhNaomo0F1S_Vc9SKogw9yvTLe7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xF1riM8G17FqkttMLfFq9qr7L_5Swgt7y3I3A1p709Ze54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.PZLH_Cu90Mja6ctt7gBYl8anbwnyfGz0LQFLf9v5z90&dib_tag=AUTHOR"},
-      {titulo:"JOE Y BRENDA (BILOGÍA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/71H4-axebaL._SY425_.jpg",comprar:"https://www.amazon.es/ESENCIA-DEL-DESTINO-JOE-BRENDA-ebook/dp/B079JYGF93?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.tzCbmqtNRIGaTdJSdAX5xgmjJg5O_5QsFh1KruTbIVSfymtE3c1GVUGC-SWCVTkneIO_qekHs55nuweAS8lhNaomo0F1S_Vc9SKogw9yvTLe7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xF1riM8G17FqkttMLfFq9qr7L_5Swgt7y3I3A1p709Ze54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.PZLH_Cu90Mja6ctt7gBYl8anbwnyfGz0LQFLf9v5z90&dib_tag=AUTHOR"},
-      {titulo:"La esencia del destino (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/71MHH+kfiRL._SY425_.jpg",comprar:"https://www.amazon.es/esencia-del-destino-C-Benito-ebook/dp/B079JSYZPP?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.tzCbmqtNRIGaTdJSdAX5xgmjJg5O_5QsFh1KruTbIVSfymtE3c1GVUGC-SWCVTkneIO_qekHs55nuweAS8lhNaomo0F1S_Vc9SKogw9yvTLe7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xF1riM8G17FqkttMLfFq9qr7L_5Swgt7y3I3A1p709Ze54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.PZLH_Cu90Mja6ctt7gBYl8anbwnyfGz0LQFLf9v5z90&dib_tag=AUTHOR"},
-      {titulo:"Libro 20",imagen:"https://via.placeholder.com/220x300/BDB76B/000000?text=Libro+20",sinopsis:"Sinopsis breve del libro 20.",genero:"Thriller",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
-      {titulo:"Libro 21",imagen:"https://via.placeholder.com/220x300/BC8F8F/FFFFFF?text=Libro+21",sinopsis:"Sinopsis breve del libro 21.",genero:"Histórica",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
-      {titulo:"Libro 22",imagen:"https://via.placeholder.com/220x300/F4A460/000000?text=Libro+22",sinopsis:"Sinopsis breve del libro 22.",genero:"Fantasía",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
-      {titulo:"Libro 23",imagen:"https://via.placeholder.com/220x300/D2691E/FFFFFF?text=Libro+23",sinopsis:"Sinopsis breve del libro 23.",genero:"Ciencia Ficción",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
-      {titulo:"Libro 24",imagen:"https://via.placeholder.com/220x300/CD5C5C/FFFFFF?text=Libro+24",sinopsis:"Sinopsis breve del libro 24.",genero:"Misterio",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
-      {titulo:"Libro 25",imagen:"https://via.placeholder.com/220x300/8B4513/FFFFFF?text=Libro+25",sinopsis:"Sinopsis breve del libro 25.",genero:"Romántico",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
-      {titulo:"Libro 26",imagen:"https://via.placeholder.com/220x300/A52A2A/FFFFFF?text=Libro+26",sinopsis:"Sinopsis breve del libro 26.",genero:"Thriller",comprar:"https://www.amazon.es/dp/B00D7LJFRS"},
-      {titulo:"Libro 27",imagen:"https://via.placeholder.com/220x300/FFE4B5/000000?text=Libro+27",sinopsis:"Sinopsis breve del libro 27.",genero:"Histórica",comprar:"https://www.amazon.es/dp/B00D7LJFRS"}
-    ];
+  {titulo:"Deja de torturarme (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/71Vr4XRm+7L._SY425_.jpg",comprar:"https://www.amazon.es/Deja-torturarme-C-J-Benito-ebook/dp/B079JXSHVC"},
+  {titulo:"La debilidad del marine (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/71eCNC5ZVaL._SY425_.jpg",comprar:"https://www.amazon.es/debilidad-del-marine-C-Benito-ebook/dp/B079JYXGCX"},
+  {titulo:"Duncan y Tris (TRILOGÍA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/713S6xeXusL._SY425_.jpg",comprar:"https://www.amazon.es/Trilog%C3%ADa-Duncan-Tris-C-Benito-ebook/dp/B0768Z87PY"},
+  {titulo:"No soy lo que parece (Historia completa)",imagen:"https://m.media-amazon.com/images/I/81Ea1TDtBlL._SY425_.jpg",comprar:"https://www.amazon.es/No-soy-lo-que-parece-ebook/dp/B0BBJMDBM3"},
+  {titulo:"Domíname si puedes (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/719rCyYSqoL._SY425_.jpg",comprar:"https://www.amazon.es/Dom%C3%ADname-si-puedes-C-Benito-ebook/dp/B079K2ZH7B"},
+  {titulo:"49 penurias de Troy (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/81sCkqlbDLL._SY425_.jpg",comprar:"https://www.amazon.es/49-penurias-Troy-C-Benito-ebook/dp/B079K64FNQ"},
+  {titulo:"Deker Harrison (TRILOGÍA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/714uu+bVm6L._SY425_.jpg",comprar:"https://www.amazon.es/Trilog%C3%ADa-Deker-Harrison-C-Benito-ebook/dp/B076YF4LQV"},
+  {titulo:"Sacrificio por amor (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/81c4l6jdnpL._SY425_.jpg",comprar:"https://www.amazon.es/Sacrificio-coraz%C3%B3n-Historia-completa-Duncan-ebook/dp/B088P9R54Y"},
+  {titulo:"Hasta las estrellas se enamoran (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/71ObreP6GtL._SY425_.jpg",comprar:"https://www.amazon.es/Hasta-las-estrellas-se-enamoran-ebook/dp/B079JYDQ4X"},
+  {titulo:"Secretaria y descarada (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/71LkwqPstFL._SY425_.jpg",comprar:"https://www.amazon.es/Secretaria-descarada-CARLOS-JAVIER-Benito-ebook/dp/B08RVWDKH9"},
+  {titulo:"Yo no soy de las que se enamoran (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/71e5xTfaIXL._SY425_.jpg",comprar:"https://www.amazon.es/Yo-soy-las-que-enamoran-ebook/dp/B07H6HHDW5"},
+  {titulo:"Una semana de lujo (Un amor prohibido) (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/714xnLuXWsL._SY425_.jpg",comprar:"https://www.amazon.es/Una-semana-lujo-amor-prohibido-ebook/dp/B079JZ18Z5"},
+  {titulo:"No te soporto pero te adoro (BILOGÍA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/71EEhokEEHL._SY425_.jpg",comprar:"https://www.amazon.es/Bilog%C3%ADa-No-soporto-pero-adoro-ebook/dp/B0768Z59VY"},
+  {titulo:"La bella y el escritor (BILOGÍA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/71Pgd34rZSL._SY425_.jpg",comprar:"https://www.amazon.es/Bilog%C3%ADa-bella-y-el-escritor-ebook/dp/B07MDLJBJ6"},
+  {titulo:"Solo es una aventura (BILOGÍA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/81TnZnyNxyL._SY425_.jpg",comprar:"https://www.amazon.es/Bilog%C3%ADa-Solo-es-una-aventura-ebook/dp/B0768ZZ5PK"},
+  {titulo:"Mi eterna protegida (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/71bHXtJI22L._SY425_.jpg",comprar:"https://www.amazon.es/Mi-eterna-protegida-C-Benito-ebook/dp/B079JWXN9N"},
+  {titulo:"No me busques en Navidad (BILOGÍA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/71YLjNlAkvL._SY425_.jpg",comprar:"https://www.amazon.es/NO-BUSQUES-NAVIDAD-HISTORIA-COMPLETA-ebook/dp/B079JYYVRY"},
+  {titulo:"JOE Y BRENDA (BILOGÍA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/71H4-axebaL._SY425_.jpg",comprar:"https://www.amazon.es/ESENCIA-DEL-DESTINO-JOE-BRENDA-ebook/dp/B079JYGF93"},
+  {titulo:"La esencia del destino (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/71MHH+kfiRL._SY425_.jpg",comprar:"https://www.amazon.es/esencia-del-destino-C-Benito-ebook/dp/B079JSYZPP"}
+  {titulo:"Loco por Diana (BILOGÍA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/71VAGkV4BtL._SY425_.jpg",comprar:"https://www.amazon.es/Bilog%C3%ADa-Loco-por-Diana-Benito-ebook/dp/B076913H1V?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.tzCbmqtNRIGaTdJSdAX5xpiaCZxrYd1udp5XQ8v14WwaE19CdcjVY9lBnqd2Bsal5I3artnsR2XSFK5fVib-ztSI27UJeX8DU_kpJac0iRbe7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xNM64jQKTSLbwSRQwIS-bLqnzl8aagNzYYk9SABOv0MH54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.pxxsyIBqwylIgJedEWTiW7t7UPa22E0kGhbPRWEssfo&dib_tag=AUTHOR"}
+  {titulo:"La conspiración de la sangre (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/81hWtnrRmqL._SY425_.jpg",comprar:"https://www.amazon.es/conspiraci%C3%B3n-sangre-C-J-Benito-ebook/dp/B079JWZCRK?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.tzCbmqtNRIGaTdJSdAX5xpiaCZxrYd1udp5XQ8v14WwaE19CdcjVY9lBnqd2Bsal5I3artnsR2XSFK5fVib-ztSI27UJeX8DU_kpJac0iRbe7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xNM64jQKTSLbwSRQwIS-bLqnzl8aagNzYYk9SABOv0MH54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.pxxsyIBqwylIgJedEWTiW7t7UPa22E0kGhbPRWEssfo&dib_tag=AUTHOR"}
+  {titulo:"Una extraña en mi ventana (BILOGÍA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/61s1-wI7YzL._SY385_.jpg",comprar:"https://www.amazon.es/Bilog%C3%ADa-Una-extra%C3%B1a-ventana-Benito-ebook/dp/B076YBFHQZ?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.tzCbmqtNRIGaTdJSdAX5xpiaCZxrYd1udp5XQ8v14WwaE19CdcjVY9lBnqd2Bsal5I3artnsR2XSFK5fVib-ztSI27UJeX8DU_kpJac0iRbe7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xNM64jQKTSLbwSRQwIS-bLqnzl8aagNzYYk9SABOv0MH54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.pxxsyIBqwylIgJedEWTiW7t7UPa22E0kGhbPRWEssfo&dib_tag=AUTHOR"}
+  {titulo:"Blood Z ",imagen:"https://m.media-amazon.com/images/I/71mFv8WoLaL._SY425_.jpg",comprar:"https://www.amazon.es/Blood-Z-C-J-BENITO-ebook/dp/B08D1S72RZ?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.tzCbmqtNRIGaTdJSdAX5xpiaCZxrYd1udp5XQ8v14WwaE19CdcjVY9lBnqd2Bsal5I3artnsR2XSFK5fVib-ztSI27UJeX8DU_kpJac0iRbe7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xNM64jQKTSLbwSRQwIS-bLqnzl8aagNzYYk9SABOv0MH54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.pxxsyIBqwylIgJedEWTiW7t7UPa22E0kGhbPRWEssfo&dib_tag=AUTHOR"}
+  {titulo:"Relatos Sobrenaturales (HISTORIA COMPLETA)",imagen:"https://m.media-amazon.com/images/I/81vva5dr-tL._SY425_.jpg",comprar:"https://www.amazon.es/C-J-Benito-Relatos-Sobrenaturales-ebook/dp/B079K7R4NY?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.tzCbmqtNRIGaTdJSdAX5xpiaCZxrYd1udp5XQ8v14WwaE19CdcjVY9lBnqd2Bsal5I3artnsR2XSFK5fVib-ztSI27UJeX8DU_kpJac0iRbe7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xNM64jQKTSLbwSRQwIS-bLqnzl8aagNzYYk9SABOv0MH54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.pxxsyIBqwylIgJedEWTiW7t7UPa22E0kGhbPRWEssfo&dib_tag=AUTHOR"}
+  {titulo:"Cazadores de Crisalyon",imagen:"https://m.media-amazon.com/images/I/81D+kASi8GL._SY425_.jpg",comprar:"https://www.amazon.es/Cazadores-Crisalyon-C-J-Benito-ebook/dp/B076YGF1W9?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.tzCbmqtNRIGaTdJSdAX5xpiaCZxrYd1udp5XQ8v14WwaE19CdcjVY9lBnqd2Bsal5I3artnsR2XSFK5fVib-ztSI27UJeX8DU_kpJac0iRbe7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xNM64jQKTSLbwSRQwIS-bLqnzl8aagNzYYk9SABOv0MH54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.pxxsyIBqwylIgJedEWTiW7t7UPa22E0kGhbPRWEssfo&dib_tag=AUTHOR"}
+  {titulo:"El poder del universo",imagen:"https://m.media-amazon.com/images/I/71gzABRWQXL._SY425_.jpg",comprar:"https://www.amazon.es/El-poder-del-universo-Benito-ebook/dp/B076VWM72X?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.tzCbmqtNRIGaTdJSdAX5xpiaCZxrYd1udp5XQ8v14WwaE19CdcjVY9lBnqd2Bsal5I3artnsR2XSFK5fVib-ztSI27UJeX8DU_kpJac0iRbe7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xNM64jQKTSLbwSRQwIS-bLqnzl8aagNzYYk9SABOv0MH54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.pxxsyIBqwylIgJedEWTiW7t7UPa22E0kGhbPRWEssfo&dib_tag=AUTHOR"}
+  {titulo:"Cambia tu vida para siempre ¡Ya! ",imagen:"https://m.media-amazon.com/images/I/81o227XLXBL._SY425_.jpg",comprar:"https://www.amazon.es/Cambia-vida-para-siempre-%C2%A1Ya-ebook/dp/B076VWRHKW?ref_=ast_author_dp&dib=eyJ2IjoiMSJ9.tzCbmqtNRIGaTdJSdAX5xpiaCZxrYd1udp5XQ8v14WwaE19CdcjVY9lBnqd2Bsal5I3artnsR2XSFK5fVib-ztSI27UJeX8DU_kpJac0iRbe7Cn3PAxOndngrw0ahQIQXVAt8hSdVY0TX7Fb-0g6xNM64jQKTSLbwSRQwIS-bLqnzl8aagNzYYk9SABOv0MH54PVW9zktItO4mYzae-U4TkXmX8AfS8Nb3PxR-Il93I.pxxsyIBqwylIgJedEWTiW7t7UPa22E0kGhbPRWEssfo&dib_tag=AUTHOR"}
+
+];
+
     const contenedor = document.getElementById('galeriaGrid');
     contenedor.innerHTML = libros.map(libro => `
       <div class="galeria-item">
